@@ -21,6 +21,7 @@ function App() {
   const [category, setCategory] = useState("");
   const [restaurant, setRestaurant] = useState(null);
   const [error, setError] = useState(null);
+  const [disabled, setDisabled] = useState(false);
 
   const params = {
     location: zipCode,
@@ -32,7 +33,7 @@ function App() {
     params.categories = category;
   }
 
-  const getRandomRestaurant = async (params) => {
+  const getRandomRestaurant = async () => {
     try {
       const queryString = new URLSearchParams(params).toString();
 
@@ -51,7 +52,13 @@ function App() {
 
       const data = await response.json();
       const businesses = data.businesses;
-      const randomIndex = Math.floor(Math.random() * businesses.length);
+
+      // Select a random restaurant that hasn't been shown before
+      let randomIndex = Math.floor(Math.random() * businesses.length);
+      while (businesses[randomIndex] === restaurant) {
+        randomIndex = Math.floor(Math.random() * businesses.length);
+      }
+
       setRestaurant(businesses[randomIndex]);
     } catch (err) {
       setError(err.message);
@@ -61,8 +68,12 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(null);
+    setDisabled(true);
 
-    await getRandomRestaurant(params);
+    await getRandomRestaurant();
+
+    // Re-enable the button
+    setDisabled(false);
   };
 
   const isValidForm = () => {
@@ -72,7 +83,7 @@ function App() {
   return (
     <>
       <div className="content">
-        <h1>Random Restaurant Finder</h1>
+        <h1>Foodie Roulette</h1>
         <form onSubmit={handleSubmit}>
           <label>
             Zip Code:
@@ -110,7 +121,7 @@ function App() {
               <p>Please enter a valid zip code and distance.</p>
             </div>
           )}
-          <button type="submit" disabled={!isValidForm()}>
+          <button type="submit" disabled={!isValidForm() || disabled}>
             Find Restaurant
           </button>
         </form>
