@@ -43,6 +43,8 @@ function App() {
         },
       });
 
+      console.log("querystring", queryString);
+
       if (!response.ok) {
         throw new Error("Failed to fetch restaurant data. Please try again.");
       }
@@ -127,7 +129,7 @@ function App() {
             </p>
             <p>Phone: {restaurant.phone}</p>
             <p>Rating: {restaurant.rating} stars</p>
-            <button onClick={getRandomRestaurant(params)}>Next</button>
+            <button onClick={() => getRandomRestaurant(params)}>Next</button>
           </div>
         )}
       </div>
