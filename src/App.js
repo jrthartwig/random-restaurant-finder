@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import yelp from "./services/yelp";
 import "./App.css";
+
+const API_BASE_URL = "/api/getRestaurant";
 
 const categories = [
   { alias: "", title: "All" },
@@ -31,15 +32,27 @@ function App() {
     params.categories = category;
   }
 
-  const getRandomRestaurant = async () => {
+  const getRandomRestaurant = async (params) => {
     try {
-      const response = await yelp.get("/search", { params });
+      const queryString = new URLSearchParams(params).toString();
 
-      const businesses = response.data.businesses;
+      const response = await fetch(`${API_BASE_URL}?${queryString}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch restaurant data. Please try again.");
+      }
+
+      const data = await response.json();
+      const businesses = data.businesses;
       const randomIndex = Math.floor(Math.random() * businesses.length);
       setRestaurant(businesses[randomIndex]);
     } catch (err) {
-      setError("Failed to fetch restaurant data. Please try again.");
+      setError(err.message);
     }
   };
 
@@ -47,7 +60,7 @@ function App() {
     e.preventDefault();
     setError(null);
 
-    await getRandomRestaurant();
+    await getRandomRestaurant(params);
   };
 
   const isValidForm = () => {
@@ -114,7 +127,7 @@ function App() {
             </p>
             <p>Phone: {restaurant.phone}</p>
             <p>Rating: {restaurant.rating} stars</p>
-            <button onClick={getRandomRestaurant}>Next</button>
+            <button onClick={getRandomRestaurant(params)}>Next</button>
           </div>
         )}
       </div>
