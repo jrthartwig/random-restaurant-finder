@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import yelp from "./services/yelp";
 import "./App.css";
+
+const API_BASE_URL = "/api/getRestaurant";
 
 const categories = [
   { alias: "", title: "All" },
@@ -20,6 +21,7 @@ function App() {
   const [category, setCategory] = useState("");
   const [restaurant, setRestaurant] = useState(null);
   const [error, setError] = useState(null);
+  const [disabled, setDisabled] = useState(false);
 
   const params = {
     location: zipCode,
@@ -33,21 +35,45 @@ function App() {
 
   const getRandomRestaurant = async () => {
     try {
-      const response = await yelp.get("/search", { params });
+      const queryString = new URLSearchParams(params).toString();
 
-      const businesses = response.data.businesses;
-      const randomIndex = Math.floor(Math.random() * businesses.length);
+      const response = await fetch(`${API_BASE_URL}?${queryString}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      console.log("querystring", queryString);
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch restaurant data. Please try again.");
+      }
+
+      const data = await response.json();
+      const businesses = data.businesses;
+
+      // Select a random restaurant that hasn't been shown before
+      let randomIndex = Math.floor(Math.random() * businesses.length);
+      while (businesses[randomIndex] === restaurant) {
+        randomIndex = Math.floor(Math.random() * businesses.length);
+      }
+
       setRestaurant(businesses[randomIndex]);
     } catch (err) {
-      setError("Failed to fetch restaurant data. Please try again.");
+      setError(err.message);
     }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(null);
+    setDisabled(true);
 
     await getRandomRestaurant();
+
+    // Re-enable the button
+    setDisabled(false);
   };
 
   const isValidForm = () => {
@@ -57,7 +83,7 @@ function App() {
   return (
     <>
       <div className="content">
-        <h1>Random Restaurant Finder</h1>
+        <h1>Foodie Roulette</h1>
         <form onSubmit={handleSubmit}>
           <label>
             Zip Code:
@@ -95,7 +121,7 @@ function App() {
               <p>Please enter a valid zip code and distance.</p>
             </div>
           )}
-          <button type="submit" disabled={!isValidForm()}>
+          <button type="submit" disabled={!isValidForm() || disabled}>
             Find Restaurant
           </button>
         </form>
@@ -114,7 +140,7 @@ function App() {
             </p>
             <p>Phone: {restaurant.phone}</p>
             <p>Rating: {restaurant.rating} stars</p>
-            <button onClick={getRandomRestaurant}>Next</button>
+            <button onClick={() => getRandomRestaurant(params)}>Next</button>
           </div>
         )}
       </div>
