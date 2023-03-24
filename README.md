@@ -2,6 +2,8 @@
 
 Foodie Roulette is a web application that suggests random restaurants based on user input, such as location, distance, category, and rating. This project was created with the help of GPT-4, a state-of-the-art language model developed by OpenAI.
 
+Website: https://nice-river-0efae610f.2.azurestaticapps.net/
+
 ## Project Creation
 
 This project was developed in collaboration with GPT-4, an advanced AI language model. The process involved using GPT-4's text generation capabilities to provide code snippets, tests, and refactor instructions for the app. The user acted as a conduit, taking the AI-generated instructions and implementing them to create the final product. Through an iterative process, the user asked GPT-4 questions and provided feedback to refine and improve the app.
