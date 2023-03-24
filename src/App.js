@@ -33,6 +33,21 @@ function App() {
     params.categories = category;
   }
 
+  const handleDirectionsClick = () => {
+    const { name } = restaurant;
+    const address = [
+      restaurant.location.address1,
+      restaurant.location.city,
+      restaurant.location.state,
+      restaurant.location.zip_code,
+    ].join(", ");
+
+    const url = `https://www.google.com/maps?q=${encodeURIComponent(
+      name
+    )} ${encodeURIComponent(address)}`;
+    window.open(url, "_blank");
+  };
+
   const getRandomRestaurant = async () => {
     try {
       const queryString = new URLSearchParams(params).toString();
@@ -141,6 +156,7 @@ function App() {
             <p>Phone: {restaurant.phone}</p>
             <p>Rating: {restaurant.rating} stars</p>
             <button onClick={() => getRandomRestaurant(params)}>Next</button>
+            <button onClick={handleDirectionsClick}>Get Directions</button>
           </div>
         )}
       </div>
