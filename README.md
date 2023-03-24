@@ -1,70 +1,29 @@
-# Getting Started with Create React App
+# Foodie Roulette
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Foodie Roulette is a web application that suggests random restaurants based on user input, such as location, distance, category, and rating. This project was created with the help of GPT-4, a state-of-the-art language model developed by OpenAI.
 
-## Available Scripts
+## Project Creation
 
-In the project directory, you can run:
+This project was developed in collaboration with GPT-4, an advanced AI language model. The process involved using GPT-4's text generation capabilities to provide code snippets, tests, and refactor instructions for the app. The user acted as a conduit, taking the AI-generated instructions and implementing them to create the final product. Through an iterative process, the user asked GPT-4 questions and provided feedback to refine and improve the app.
 
-### `npm start`
+## Technologies Used
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The following technologies were used in the creation of Foodie Roulette:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. **React**: A popular JavaScript library for building user interfaces. The project is structured as a React app, with components for the header, form, and restaurant display.
+2. **Azure Functions**: A serverless compute service that allows running small pieces of code without managing infrastructure. An Azure Function was used to create a backend API for fetching restaurant data from the Yelp API.
+3. **Yelp API**: A public API that provides access to Yelp's extensive database of restaurants and businesses. The app uses the Yelp API to fetch a list of restaurants based on user inputs.
+4. **Azure Static Web Apps**: A service that automatically builds and deploys full-stack web apps from a GitHub or Azure DevOps repository. The project is configured to be deployed as an Azure Static Web App, which includes both the frontend and the backend API.
+5. **CSS**: The app uses CSS to style components and make the design responsive for different screen sizes.
 
-### `npm test`
+## Tests
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+As part of the development process, GPT-4 provided instructions for creating unit tests for the React components in the app. These tests ensure that the app behaves as expected when the user interacts with it. The tests cover form submission, API calls, and restaurant display functionality.
 
-### `npm run build`
+## Refactoring
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Throughout the project's development, GPT-4 suggested various refactoring steps to improve code quality, organization, and maintainability. These recommendations included splitting the app into separate components, moving constants and utility functions to separate files, and organizing components in a dedicated folder.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Acknowledgments
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project was made possible by the assistance of GPT-4, a powerful AI language model developed by OpenAI. The user's role as a conduit allowed for the successful implementation of GPT-4's instructions and the creation of the Foodie Roulette app.
