@@ -18,29 +18,32 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #171c28;
+  background-color: #34495e;
   color: #ffffff;
 }
 
 h1 {
   font-family: "Roboto", sans-serif;
   text-align: center;
-  padding: 20px 0;
-  background-color: #263238;
+  padding: 30px 0;
+  background-image: linear-gradient(to right, #2c3e50, #34495e);
   color: #ffffff;
   margin: 0;
+  font-size: 36px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
-  padding: 20px;
-  background-color: #ffffff;
-  border-bottom: 1px solid #cfd8dc;
-  color: #263238;
+  gap: 20px;
+  padding: 30px;
+  background-color: #22313f;
+  border-bottom: 1px solid #34495e;
+  color: #ffffff;
   margin-top: 20px;
+  border-radius: 10px;
 }
 
 label {
@@ -50,50 +53,75 @@ label {
   width: 100%;
   max-width: 300px;
   font-weight: bold;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
-input {
-  padding: 5px;
-  border: 1px solid #cfd8dc;
-  border-radius: 3px;
+input,
+select {
+  padding: 8px;
+  border: 1px solid #34495e;
+  border-radius: 5px;
   color: #263238;
+  background-color: #ffffff;
+  font-size: 14px;
+  width: 100%;
+  margin-top: 5px;
 }
 
 button {
-  padding: 8px 16px;
-  background-color: #263238;
+  padding: 10px 20px;
+  background-color: #f39c12;
   color: #ffffff;
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: bold;
   border: none;
-  border-radius: 3px;
+  border-radius: 5px;
   cursor: pointer;
-  margin-top: 10px;
+  margin-top: 20px;
   font-family: "Roboto", sans-serif;
 }
 
 button:hover {
-  background-color: #1e252f;
+  background-color: #d35400;
 }
 
 .restaurant-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
-  background-color: #ffffff;
-  border-bottom: 1px solid #cfd8dc;
+  padding: 30px;
+  background-color: #22313f;
+  border: 1px solid #34495e;
   margin-top: 40px;
   margin-bottom: 40px;
-  color: #263238;
+  color: #ffffff;
+  border-radius: 10px;
 }
 
 .restaurant-container button {
   margin-top: 15px;
+  background-color: #f39c12;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 10px 20px;
+}
+
+.restaurant-container button:hover {
+  background-color: #d35400;
 }
 
 .restaurant-container h2 {
+  margin: 0 0 20px;
+  font-size: 24px;
+}
+
+.restaurant-container p {
   margin: 0 0 10px;
+  font-size: 16px;
 }
 
 p {
@@ -102,9 +130,9 @@ p {
 
 .error-message {
   padding: 20px;
-  background-color: #ffffff;
-  border-bottom: 1px solid #cfd8dc;
-  color: #f44336;
+  background-color: #22313f;
+  border-bottom: 1px solid #34495e;
+  color: #e74c3c;
   text-align: center;
 }
 
@@ -114,8 +142,7 @@ button[disabled] {
 }
 
 .validation-message {
-  color: #8b0000; /* Dark red */
-  margin-top: 10px;
+  color: #e74c3c; /* Updated red */
 }
 
 footer {
@@ -123,14 +150,16 @@ footer {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #263238;
+  background-image: linear-gradient(to right, #2c3e50, #34495e);
   color: #ffffff;
   padding: 20px;
   font-size: 14px;
+  width: 100%;
+  border-top: 1px solid #4a6987;
 }
 
 footer p {
-  margin: 0;
+  margin: 5px 0;
 }
 
 /* Responsive styles */
@@ -150,5 +179,11 @@ footer p {
     width: 90%;
     margin-left: auto;
     margin-right: auto;
+    border-radius: 15px;
+  }
+
+  footer {
+    padding: 10px;
+    font-size: 12px;
   }
 }
