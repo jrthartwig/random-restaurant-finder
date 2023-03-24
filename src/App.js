@@ -69,7 +69,11 @@ function App() {
         )}
         <Restaurant
           restaurant={restaurant}
-          getNextRestaurant={getRandomRestaurant}
+          getNextRestaurant={getRandomRestaurant(
+            params,
+            setRestaurant,
+            setError
+          )}
         />
       </div>
       <footer>
