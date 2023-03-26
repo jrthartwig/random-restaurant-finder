@@ -15,7 +15,6 @@ function App() {
   const [disabled, setDisabled] = useState(false);
   const [rating, setRating] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [currentRestaurant, setCurrentRestaurant] = useState(null);
 
   const params = {
     location: zipCode,
