@@ -25,12 +25,13 @@ body {
 h1 {
   font-family: "Roboto", sans-serif;
   text-align: center;
-  padding: 30px 0;
+  padding: 40px 0;
   background-image: linear-gradient(to right, #2c3e50, #34495e);
   color: #ffffff;
   margin: 0;
-  font-size: 36px;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-size: 48px; /* Increased font size */
+  font-weight: bold; /* Added bold font weight */
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5); /* Increased text-shadow */
 }
 
 form {
@@ -160,6 +161,32 @@ footer {
 
 footer p {
   margin: 5px 0;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+}
+
+.loading .spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #767676;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
 }
 
 /* Responsive styles */

@@ -28,8 +28,8 @@ const Form = ({
         Distance (miles):
         <input
           type="number"
-          min="1"
-          max="25"
+          min="2"
+          max="24"
           value={distance}
           onChange={(e) => setDistance(e.target.value)}
         />
