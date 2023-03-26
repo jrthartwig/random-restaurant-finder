@@ -14,6 +14,8 @@ function App() {
   const [error, setError] = useState(null);
   const [disabled, setDisabled] = useState(false);
   const [rating, setRating] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [currentRestaurant, setCurrentRestaurant] = useState(null);
 
   const params = {
     location: zipCode,
@@ -33,11 +35,19 @@ function App() {
     e.preventDefault();
     setError(null);
     setDisabled(true);
+    setIsLoading(true);
 
-    await getRandomRestaurant(params, setRestaurant, setError);
+    await getRandomRestaurant(
+      params,
+      restaurant,
+      setRestaurant,
+      setError,
+      setIsLoading
+    );
 
     // Re-enable the button
     setDisabled(false);
+    setIsLoading(false);
   };
 
   const isValidForm = () => {
@@ -62,6 +72,12 @@ function App() {
           disabled={disabled}
           categories={categories}
         />
+        {isLoading && (
+          <div className="loading">
+            <div className="spinner"></div>
+          </div>
+        )}
+
         {error && (
           <div className="error-message">
             <p>{error}</p>
@@ -70,8 +86,15 @@ function App() {
         <Restaurant
           restaurant={restaurant}
           getNextRestaurant={() =>
-            getRandomRestaurant(params, setRestaurant, setError)
+            getRandomRestaurant(
+              params,
+              restaurant,
+              setRestaurant,
+              setError,
+              setIsLoading
+            )
           }
+          setIsLoading={setIsLoading}
         />
       </div>
       <footer>

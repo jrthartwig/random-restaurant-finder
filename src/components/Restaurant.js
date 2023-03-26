@@ -1,6 +1,6 @@
 import React from "react";
 
-function Restaurant({ restaurant, getNextRestaurant }) {
+function Restaurant({ restaurant, getNextRestaurant, setIsLoading }) {
   if (!restaurant) return null;
 
   const openGoogleMaps = () => {
@@ -9,6 +9,11 @@ function Restaurant({ restaurant, getNextRestaurant }) {
     );
     const url = `https://www.google.com/maps/search/?api=1&query=${query}`;
     window.open(url, "_blank");
+  };
+
+  const handleNextClick = () => {
+    setIsLoading(true);
+    getNextRestaurant();
   };
 
   return (
@@ -21,7 +26,7 @@ function Restaurant({ restaurant, getNextRestaurant }) {
       </p>
       <p>Phone: {restaurant.phone}</p>
       <p>Rating: {restaurant.rating} stars</p>
-      <button onClick={getNextRestaurant}>Next</button>
+      <button onClick={handleNextClick}>Next</button>
       <button onClick={openGoogleMaps}>Get Directions</button>
     </div>
   );
